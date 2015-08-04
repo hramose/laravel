@@ -26,3 +26,8 @@ Route::post('about','PagesController@store');
 //Route::post('articles','ArticlesController@store');
 
 Route::resource('articles','ArticlesController');
+
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);

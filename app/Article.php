@@ -41,7 +41,7 @@ class Article extends Model
     }
 
     /**
-     * An article is owner by a user.
+     * An article is owned by a user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
