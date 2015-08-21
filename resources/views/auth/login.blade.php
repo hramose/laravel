@@ -1,61 +1,49 @@
 @extends('app')
 
-@section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Login</div>
-                    <div class="panel-body">
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+@section('lol')
+    <body class="login tooltips container-fluid">
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">E-Mail Address</label>
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Password</label>
-                                <div class="col-md-6">
-                                    <input type="password" class="form-control" name="password">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">Login</button>
-
-                                    <a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+	<!--===========================================================
+		BEGIN PAGE
+		===========================================================
+		-->
+    <div class="login-header text-center container-fluid">
+        <img src="https://omnepresent.com/wp-content/uploads/2014/12/Omnepresent-Logo-1212.svg" class="logo" alt="Logo">
+    </div>
+    <div class="login-wrapper">
+         @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form role="form" method="POST"  action="{{ url('/auth/login') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="form-group has-feedback lg left-feedback no-label">
+                <input type="email" class="form-control no-border input-lg rounded" placeholder="Enter Your Email" value="{{ old('email') }}" name="email" autofocus>
+                <span class="fa fa-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback lg left-feedback no-label">
+                <input type="password" class="form-control no-border input-lg rounded" placeholder="Enter password" name="password">
+                <span class="fa fa-unlock-alt form-control-feedback"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" class="i-yellow-flat" name="remember"> Remember me
+                    </label>
                 </div>
             </div>
-        </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning btn-lg btn-perspective btn-block">LOGIN</button>
+            </div>
+        </form>
+        <p class="text-center"><strong><a href="{{ url('/password/email') }}">Forgot your password?</a></strong></p>
+        <p class="text-center">or</p>
+        <p class="text-center"><strong><a href="{{ url('/auth/register') }}">Create a new account</a></strong></p>
     </div>
 @endsection
