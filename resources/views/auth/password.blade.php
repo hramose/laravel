@@ -1,12 +1,11 @@
 @extends('app')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Reset Password</div>
-                    <div class="panel-body">
+    <body class="login tooltips container-fluid">
+    <div class="login-header text-center container-fluid">
+        <img src="https://omnepresent.com/wp-content/uploads/2014/12/Omnepresent-Logo-1212.svg" class="logo" alt="Logo">
+    </div>
+    <div class="login-wrapper">
                         @if (session('status'))
                             <div class="alert alert-success">
                                 {{ session('status') }}
@@ -23,28 +22,21 @@
                                 </ul>
                             </div>
                         @endif
-
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
+                            <div class="login-wrapper">
+                                <div class="alert alert-warning alert-bold-border fade in alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    Enter your email address to recover your password.
+                                </div>
+                        <form  role="form" method="POST" action="{{ url('/password/email') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">E-Mail Address</label>
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                                </div>
+                            <div class="form-group has-feedback lg left-feedback no-label">
+                                <input type="email" class="form-control no-border input-lg rounded" placeholder="Enter email" name="email" value="{{ old('email') }}" autofocus>
+                                <span class="fa fa-envelope form-control-feedback"></span>
                             </div>
-
                             <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Send Password Reset Link
-                                    </button>
-                                </div>
+                                <button type="submit" class="btn btn-warning btn-lg btn-perspective btn-block">RESET PASSWORD</button>
                             </div>
                         </form>
                     </div>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
