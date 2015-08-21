@@ -129,7 +129,7 @@ BEGIN PAGE
                     <li class="dropdown">
                         <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar">
-                            Hi, <strong>Paris Hawker</strong>
+                            Hi, <strong>{{old('username')}}</strong>
                         </a>
                         <ul class="dropdown-menu square primary margin-list-rounded with-triangle">
                             <li><a href="#fakelink">Account setting</a></li>
