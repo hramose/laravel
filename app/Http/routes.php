@@ -22,10 +22,7 @@ Route::post('about','PagesController@store');
 //Route::post('articles','ArticlesController@store');
 Route::resource('articles','ArticlesController');
 
-Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
-]);
+
 */
 /*
 // Authentication routes...
@@ -42,3 +39,7 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 */
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
